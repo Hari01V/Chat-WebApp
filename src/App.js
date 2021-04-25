@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact />
+        {/* ROUTING HERE */}
       </Switch>
       <ChatContainer />
     </div>

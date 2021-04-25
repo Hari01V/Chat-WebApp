@@ -47,6 +47,9 @@ class Firebase {
   }
 
   createNewchat = async (chatUserId) => {
+    if (chatUserId === this.auth.currentUser.uid) {
+      return;
+    }
     await this.firestore.collection('Chats').add({
       user1: this.auth.currentUser.uid,
       user2: chatUserId

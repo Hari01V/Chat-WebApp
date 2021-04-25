@@ -28,10 +28,11 @@ function UserList(props) {
           <MoreVertIcon />
         </div>
       </div>
-      {users && users.map(user => (
-        firebase.auth.currentUser.uid !== user.uid ?
-          <User key={user.uid} user={user} setChatUser={setChatUser} /> : <></>
-      ))}
+      {users && users.map(user => {
+        if (firebase.auth.currentUser.uid !== user.uid) {
+          return <User key={user.uid} user={user} setChatUser={setChatUser} />
+        }
+      })}
     </div>
   )
 }
