@@ -16,7 +16,7 @@
   bottom: 0;
   right: 10px;
 }
-.image-container{
+.User .image-container{
   margin-left: 0.4rem;
 }
 .User-pic{
@@ -28,4 +28,26 @@
   padding-left: 1rem;
   font-weight: 400;
   font-size: 20px;
+}
+
+.User .content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.User .content h1{
+  margin: 0;
+}
+.User .content .msg{
+  color: grey;
+  font-size: 12px;
+  padding: 0 0 0 16px;
+  display: flex;
+  align-items: center;
+}
+.User .content .msg svg{
+  width: 12px;
+  height: 12px;
+  margin-right: 4px;
 }

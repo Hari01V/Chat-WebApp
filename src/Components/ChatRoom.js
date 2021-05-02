@@ -57,10 +57,15 @@ function ChatRoom(props) {
     if (!formValue.match(/^\s*$/)) {
       const { uid } = firebase.auth.currentUser;
       const messageRef = firebase.firestore.collection('Chats').doc(chat.docId).collection('messages');
-      await messageRef.add({
+      const msg = {
         sender: uid,
         data: formValue,
         sentAt: Firebase.firestore.Timestamp.now()
+      }
+      await messageRef.add({
+        sender: uid,
+        data: formValue,
+        sentAt: msg.sentAt
       }).then((docRef) => {
         //UPDATE THE LOCALSTORAGE
         // console.log("UPDATING LOCAL STORAGE!");
@@ -72,8 +77,13 @@ function ChatRoom(props) {
         console.log("ERROR: MESSAGE COULD'NT BE SENT");
         console.log(error);
       });
+      setformValue('');
+
+      const chatRef = firebase.firestore.collection('Chats').doc(chat.docId);
+      await chatRef.set({
+        latestMsg: msg
+      }, { merge: true });
     }
-    setformValue('');
   }
 
   return (

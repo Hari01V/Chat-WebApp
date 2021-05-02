@@ -62,12 +62,13 @@ class Firebase {
     this.myChats = [];
     const currUserId = this.auth.currentUser.uid;
     if (currUserId) {
-      await this.firestore.collection('Chats').get().then((querySnapshot) => {
+      await this.firestore.collection('Chats').onSnapshot((querySnapshot) => {
+        this.myChats = [];
         querySnapshot.forEach((doc) => {
           if (doc.data().user1 === currUserId) {
-            this.myChats.push({ docId: doc.id, otherUser: doc.data().user2 });
+            this.myChats.push({ docId: doc.id, otherUser: doc.data().user2, latestMsg: doc.data().latestMsg });
           } else if (doc.data().user2 === currUserId) {
-            this.myChats.push({ docId: doc.id, otherUser: doc.data().user1 });
+            this.myChats.push({ docId: doc.id, otherUser: doc.data().user1, latestMsg: doc.data().latestMsg });
           }
         });
         console.log("inside get my chats")

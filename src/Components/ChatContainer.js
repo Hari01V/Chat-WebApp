@@ -48,10 +48,9 @@ function ChatContainer() {
       </section>
       <section className="Chats-section">
         {user ? (chatUser.uid ?
-          // (JSON.stringify(firebase.chat) !== "{}" ? <ChatRoom chatUser={chatUser} chat={firebase.chat} /> : <></>)
           (chat ? <ChatRoom chatUser={chatUser} chat={chat} /> : <></>)
-          : <div className="emptyChatSection">
-          </div>) : <SignIn />}
+          : <div className="emptyChatSection"></div>)
+          : <SignIn />}
       </section>
     </div>
   );

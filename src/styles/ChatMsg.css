@@ -1,11 +1,13 @@
 .message{
   background: #f8f9fa;
   width: fit-content;
+  min-width: 70px;
   max-width: 600px;
   font-size: 16px;
-  padding: 4px 16px;
+  padding: 12px 16px 4px 16px;
   margin: 0.2rem 2rem;
   border-radius: 8px;
+  position: relative;
 }
 .sent{
   background: #dcf8c6;
@@ -16,4 +18,12 @@
 .recieved{
   text-align: left;
   border-top-left-radius: 0px;
+}
+.date{
+  color: grey;
+  font-size: 10px;
+  padding: 0px 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }

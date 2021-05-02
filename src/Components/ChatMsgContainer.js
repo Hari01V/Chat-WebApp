@@ -10,15 +10,17 @@ function ChatMsgContainer(props) {
     console.log("COMPONENT CHATMSGCONTAINER DID UPDATE");
   }, []);
 
-  // dummy.current.scrollIntoView({ behaviour: "smooth" });
+  useEffect(() => {
+    dummy.current.scrollIntoView({ behaviour: "smooth" });
+  });
 
   return (
     <main className="ChatMsgContainer">
       <div className="ChatMsgs">
         {/* {localMessages && localMessages.map(msg => <ChatMsg key={msg.id} message={msg.data} sender={msg.sender} />)} */}
-        {messages && messages.map(msg => <ChatMsg key={msg.id} message={msg.data} sender={msg.sender} />)}
+        {messages && messages.map(msg => <ChatMsg key={msg.id} message={msg} />)}
+        <div ref={dummy}></div>
       </div>
-      <div ref={dummy}></div>
     </main>
   )
 }
